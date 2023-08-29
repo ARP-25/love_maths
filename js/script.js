@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
     }
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    })
     runGame("addition");
 })
 
@@ -21,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
  * and after the user's answer has been processed.
 */
 function runGame(gameType) {
+    document.getElementById("answer-box").value = "";
+    document.getElementById("answer-box").focus();
     // Creates two random numbers between 1 and 25.
     let num1 = Math.floor( (Math.random() * 25) +1 );
     let num2 = Math.floor( (Math.random() * 25) +1 );
@@ -93,7 +100,6 @@ function displayAdditionQuestion(operand1, operand2) {
 }
 
 function displaySubtractQuestion(operand1, operand2) {
-
     if (operand1 >= operand2) {
         document.getElementById("operand1").textContent = operand1;
         document.getElementById("operand2").textContent = operand2;
